@@ -1,0 +1,289 @@
+/* =========================
+   MAIN PAGE
+========================= */
+
+.products{
+  width: calc(100% - 320px);
+  margin-left: auto;
+  min-height: 100vh;
+  background: #F8F2DE;
+  padding: 35px;
+  box-sizing: border-box;
+}
+
+/* =========================
+   HEADER SECTION
+========================= */
+
+.product-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   TOTAL PRODUCTS CARD
+========================= */
+
+.totalProducts{
+  background: #FFFFFF;
+  padding: 25px 55px;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(163,29,29,0.10);
+  min-width: 220px;
+  margin-top: 70px;
+  border: 1px solid #ECDCBF;
+}
+
+.totalProducts p{
+  font-size: 18px;
+  color: #A31D1D;
+  margin-bottom: 10px;
+}
+
+.totalProducts h2{
+  font-size: 42px;
+  color: #D84040;
+}
+
+/* =========================
+   ADD PRODUCT BUTTON
+========================= */
+
+.Addproducts a{
+  text-decoration: none;
+  background: #D84040;
+  color: #FFFFFF;
+  padding: 15px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s;
+  display: inline-block;
+  margin-top: 70px;
+}
+
+.Addproducts a:hover{
+  background: #A31D1D;
+  transform: translateY(-3px);
+}
+
+/* =========================
+   TABLE CONTAINER
+========================= */
+
+.ProductsTable{
+  width: 100%;
+  overflow-x: auto;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(163,29,29,0.10);
+  border: 1px solid #ECDCBF;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.ProductsTable table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+/* =========================
+   TABLE HEAD
+========================= */
+
+.ProductsTable thead{
+  background: #D84040;
+}
+
+.ProductsTable thead th{
+  color: #FFFFFF;
+  padding: 18px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* =========================
+   TABLE BODY
+========================= */
+
+.ProductsTable tbody tr{
+  border-bottom: 1px solid #ECDCBF;
+  transition: 0.3s;
+}
+
+.ProductsTable tbody tr:hover{
+  background: #F8F2DE;
+}
+
+.ProductsTable tbody td{
+  padding: 18px 15px;
+  text-align: center;
+  font-size: 15px;
+  color: #333333;
+  vertical-align: middle;
+}
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.ProductsTable tbody img{
+  width: 75px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ECDCBF;
+  padding: 4px;
+  background: #FFFFFF;
+}
+
+/* =========================
+   DESCRIPTION COLUMN
+========================= */
+
+.ProductsTable tbody td:nth-child(8){
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.ProductsTable tbody td button{
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 4px;
+  transition: 0.3s ease;
+}
+
+/* =========================
+   EDIT BUTTON - GREEN
+========================= */
+
+.ProductsTable tbody td button:first-child{
+  background: #28A745;
+}
+
+.ProductsTable tbody td button:first-child:hover{
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   DELETE BUTTON - RED
+========================= */
+
+.ProductsTable tbody td button:last-child{
+  background: #D84040;
+}
+
+.ProductsTable tbody td button:last-child:hover{
+  background: #A31D1D;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   ORDER STATUS SELECT
+========================= */
+
+.ProductsTable tbody td select{
+  width: 140px;
+  padding: 10px 14px;
+  border: 1px solid #ECDCBF;
+  border-radius: 8px;
+  background: #F8F2DE;
+  color: #A31D1D;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.ProductsTable tbody td select:focus{
+  border-color: #D84040;
+  box-shadow: 0 0 0 3px rgba(216, 64, 64, 0.15);
+}
+
+.ProductsTable tbody td select:hover{
+  border-color: #D84040;
+  background: #FFF8EE;
+}
+
+.ProductsTable tbody td select option{
+  background: #FFFFFF;
+  color: #333333;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+  .products{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .product-header{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .totalProducts{
+    margin-top: 20px;
+  }
+
+  .Addproducts a{
+    margin-top: 0;
+  }
+}
+
+@media(max-width:576px){
+
+  .products{
+    padding: 15px;
+  }
+
+  .ProductsTable{
+    padding: 12px;
+  }
+
+  .ProductsTable thead th,
+  .ProductsTable tbody td{
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .ProductsTable tbody td button{
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .totalProducts{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .totalProducts h2{
+    font-size: 32px;
+  }
+}

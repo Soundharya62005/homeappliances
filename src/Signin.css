@@ -1,0 +1,229 @@
+/* =====================================
+   GOOGLE FONT
+===================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* =====================================
+   GLOBAL
+===================================== */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  background: #F8F2DE;
+  color: #333;
+}
+
+/* =====================================
+   TOP HEADER
+===================================== */
+.top-header{
+  width: 100%;
+  height: 90px;
+  background: #ECDCBF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #D84040;
+}
+
+.logo h2{
+  color: #A31D1D;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* =====================================
+   SEARCH BAR
+===================================== */
+.search-bar{
+  width: 350px;
+  height: 45px;
+  padding: 0 20px;
+  border: 2px solid #D84040;
+  border-radius: 30px;
+  outline: none;
+  font-size: 15px;
+  background: white;
+}
+
+.search-bar:focus{
+  border-color: #A31D1D;
+  box-shadow: 0 0 10px rgba(216,64,64,0.25);
+}
+
+/* =========================
+   SIGNIN CONTAINER
+========================= */
+
+.signin{
+  width: 420px;
+  background: #ffffff;
+  margin: 120px auto;
+  padding: 45px;
+  border-radius: 30px;
+  border: 1px solid #ECDCBF;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  animation: fadeIn 0.8s ease;
+}
+
+/* TITLE */
+
+.signin h2{
+  text-align: center;
+  font-size: 34px;
+  color: #A31D1D;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.signin h2::after{
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: #D84040;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -12px;
+  border-radius: 10px;
+}
+
+/* FORM */
+
+.signin form{
+  display: flex;
+  flex-direction: column;
+}
+
+/* LABEL */
+
+.signin label{
+  font-size: 15px;
+  font-weight: 600;
+  color: #A31D1D;
+  margin-bottom: 8px;
+}
+
+/* INPUT */
+
+.signin input{
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 14px;
+  border: 2px solid #ECDCBF;
+  outline: none;
+  margin-bottom: 22px;
+  font-size: 15px;
+  background: #F8F2DE;
+  transition: 0.3s;
+}
+
+.signin input:focus{
+  border-color: #D84040;
+  background: white;
+  box-shadow: 0 0 10px rgba(216,64,64,0.2);
+}
+
+/* BUTTON */
+
+.signin button{
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 40px;
+  background: #D84040;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.signin button:hover{
+  background: #A31D1D;
+  transform: translateY(-3px);
+}
+
+/* LINKS */
+
+.signin p{
+  text-align: center;
+  margin-top: 18px;
+  color: #555;
+  font-size: 15px;
+}
+
+.signin p a{
+  text-decoration: none;
+  color: #D84040;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.signin p a:hover{
+  color: #A31D1D;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeIn{
+
+  from{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:576px){
+
+  .signin{
+    width: 92%;
+    padding: 30px 20px;
+    margin: 40px auto;
+  }
+
+  .signin h2{
+    font-size: 28px;
+  }
+
+  .signin input{
+    padding: 13px 15px;
+  }
+
+  .signin button{
+    padding: 13px;
+    font-size: 15px;
+  }
+}

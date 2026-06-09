@@ -1,0 +1,259 @@
+/* =========================
+   COMMON ADMIN FORM PAGE
+========================= */
+
+.addproducts{
+  width: 100%;
+  min-height: 100vh;
+  background: #F8F2DE;
+  /* background: #f5f7fb; */
+
+  display: flex;
+  justify-content: flex-end;
+
+  padding: 40px;
+  box-sizing: border-box;
+  margin-top: 100px;
+}
+
+/* =========================
+   FORM BOX
+========================= */
+
+.addproducts form{
+  width: calc(100% - 380px);
+  max-width: 600px;
+
+  background: #ffffff;
+  padding: 45px;
+  border-radius: 25px;
+
+  box-shadow: 0 10px 30px rgba(163,29,29,0.12);
+
+  height: fit-content;
+
+  position: relative;
+  overflow: hidden;
+
+  margin-right: 500px;
+
+  border: 1px solid #ECDCBF;
+}
+
+/* Decorative Circle */
+
+.addproducts form::before{
+  content: "";
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  background: linear-gradient(
+    135deg,
+    #D84040,
+    #A31D1D
+  );
+
+  border-radius: 50%;
+
+  top: -120px;
+  right: -120px;
+
+  opacity: 0.08;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.addproducts form h2{
+  font-size: 36px;
+  color: #A31D1D;
+  margin-bottom: 35px;
+  position: relative;
+  z-index: 2;
+}
+
+.addproducts form h2::after{
+  content: "";
+  width: 80px;
+  height: 4px;
+
+  background: #D84040;
+
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+
+  border-radius: 10px;
+}
+
+/* =========================
+   LABELS
+========================= */
+
+.addproducts form label{
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #A31D1D;
+
+  margin-bottom: 10px;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.addproducts form input,
+.addproducts form textarea,
+.addproducts form select{
+  width: 100%;
+
+  padding: 15px 18px;
+
+  border-radius: 14px;
+
+  border: 1px solid #ECDCBF;
+
+  outline: none;
+
+  font-size: 15px;
+
+  background: #F8F2DE;
+
+  transition: 0.3s;
+
+  margin-bottom: 22px;
+
+  box-sizing: border-box;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* Focus */
+
+.addproducts form input:focus,
+.addproducts form textarea:focus,
+.addproducts form select:focus{
+
+  border-color: #D84040;
+
+  background: white;
+
+  box-shadow:
+    0 0 0 4px rgba(216,64,64,0.12);
+}
+
+/* =========================
+   TEXTAREA
+========================= */
+
+.addproducts form textarea{
+  min-height: 140px;
+  resize: none;
+}
+
+/* =========================
+   FILE INPUT
+========================= */
+
+.addproducts form input[type="file"]{
+  background: white;
+  cursor: pointer;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.addproducts form button{
+  width: 100%;
+
+  padding: 16px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #D84040,
+    #A31D1D
+  );
+
+  color: white;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.4s;
+
+  margin-top: 10px;
+
+  position: relative;
+  z-index: 2;
+}
+
+.addproducts form button:hover{
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 25px rgba(216,64,64,0.25);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+  .addproducts{
+    padding: 25px;
+  }
+
+  .addproducts form{
+    width: 100%;
+    margin-right: 0;
+    padding: 35px 25px;
+  }
+
+}
+
+@media(max-width:576px){
+
+  .addproducts{
+    padding: 15px;
+  }
+
+  .addproducts form{
+    padding: 25px 18px;
+    border-radius: 18px;
+  }
+
+  .addproducts form h2{
+    font-size: 28px;
+  }
+
+  .addproducts form input,
+  .addproducts form textarea,
+  .addproducts form select{
+    padding: 13px 15px;
+    font-size: 14px;
+  }
+
+  .addproducts form button{
+    padding: 14px;
+    font-size: 15px;
+  }
+
+}

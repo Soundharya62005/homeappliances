@@ -1,0 +1,236 @@
+/* =========================
+   SUCCESS PAGE
+========================= */
+
+.success-container{
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #F8F2DE,
+    #ECDCBF
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* =========================
+   SUCCESS CARD
+========================= */
+
+.success-card{
+  width: 100%;
+  max-width: 700px;
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.success-card::before{
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: rgba(34,197,94,0.08);
+  border-radius: 50%;
+  top: -120px;
+  right: -120px;
+}
+
+/* =========================
+   SUCCESS ICON
+========================= */
+
+.success-icon{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #22c55e,
+    #16a34a
+  );
+
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 50px;
+  font-weight: bold;
+
+  box-shadow: 0 10px 25px rgba(34,197,94,0.3);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.success-card h1{
+  color: #16a34a;
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.success-message{
+  color: #666;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+/* =========================
+   ORDER INFO
+========================= */
+
+.order-info{
+  background: #FCFAF5;
+  border: 2px solid #ECDCBF;
+  border-radius: 18px;
+  padding: 25px;
+  margin-bottom: 35px;
+  text-align: left;
+}
+
+.order-info h3{
+  color: #A31D1D;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.order-info p{
+  margin-bottom: 12px;
+  color: #444;
+  font-size: 16px;
+}
+
+.order-info strong{
+  color: #16a34a;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-group{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Continue Shopping */
+
+.shop-btn{
+  padding: 14px 30px;
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #D84040,
+    #A31D1D
+  );
+
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.shop-btn:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(216,64,64,0.25);
+}
+
+/* View Orders */
+
+.orders-btn{
+  padding: 14px 30px;
+  border: 2px solid #D84040;
+  border-radius: 12px;
+
+  background: white;
+  color: #D84040;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.orders-btn:hover{
+  background: #D84040;
+  color: white;
+  transform: translateY(-4px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .success-card{
+    padding: 35px 25px;
+  }
+
+  .success-card h1{
+    font-size: 28px;
+  }
+
+  .success-message{
+    font-size: 15px;
+  }
+
+  .button-group{
+    flex-direction: column;
+  }
+
+  .shop-btn,
+  .orders-btn{
+    width: 100%;
+  }
+}
+
+@media(max-width:576px){
+
+  .success-container{
+    padding: 20px;
+  }
+
+  .success-card{
+    padding: 25px 20px;
+  }
+
+  .success-icon{
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+  }
+
+  .success-card h1{
+    font-size: 24px;
+  }
+
+  .order-info{
+    padding: 20px;
+  }
+
+  .order-info h3{
+    font-size: 20px;
+  }
+}

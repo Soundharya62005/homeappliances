@@ -1,0 +1,136 @@
+/* =========================
+   PROFILE PAGE
+========================= */
+
+.profile-container{
+  width: 100%;
+  min-height: 100vh;
+  /* background: #F8F2DE; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* PROFILE CARD */
+
+.profile-card{
+  width: 500px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-top: 5px solid #D84040;
+}
+
+/* PROFILE ICON */
+
+.profile-icon{
+  margin-bottom: 20px;
+}
+
+.profile-icon i{
+  font-size: 90px;
+  color: #D84040;
+}
+
+/* USERNAME */
+
+.profile-card h2{
+  font-size: 30px;
+  color: #A31D1D;
+  margin-bottom: 25px;
+}
+
+/* DETAILS */
+
+.profile-details{
+  background: #F8F2DE;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.profile-details p{
+  font-size: 16px;
+  color: #333;
+  padding: 12px 0;
+  border-bottom: 1px solid #ECDCBF;
+}
+
+.profile-details p:last-child{
+  border-bottom: none;
+}
+
+.profile-details strong{
+  color: #A31D1D;
+}
+
+/* BUTTONS */
+
+.profile-buttons{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.profile-buttons button{
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+/* HOME BUTTON */
+
+.profile-buttons a button{
+  background: #ECDCBF;
+  color: #A31D1D;
+}
+
+.profile-buttons a button:hover{
+  background: #D84040;
+  color: white;
+}
+
+/* LOGOUT BUTTON */
+
+.profile-buttons button:last-child{
+  background: #D84040;
+  color: white;
+}
+
+.profile-buttons button:last-child:hover{
+  background: #A31D1D;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .profile-card{
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .profile-buttons{
+    flex-direction: column;
+  }
+
+  .profile-buttons button{
+    width: 100%;
+  }
+
+  .profile-icon i{
+    font-size: 70px;
+  }
+
+  .profile-card h2{
+    font-size: 24px;
+  }
+}
