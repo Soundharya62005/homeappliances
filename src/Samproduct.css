@@ -16,6 +16,10 @@
    SIDEBAR
 ========================= */
 
+/* =========================
+   SIDEBAR
+========================= */
+
 .productsidebar{
   width: 380px;
   min-width: 320px;
@@ -25,14 +29,17 @@
   position: sticky;
   top: 20px;
   border-right: 4px solid #D84040;
+  border-radius: 0 15px 15px 0;
 }
 
-/* Sidebar Title */
+/* =========================
+   SIDEBAR TITLE
+========================= */
 
 .productsidebar h2{
   font-size: 28px;
   color: #A31D1D;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   position: relative;
 }
 
@@ -48,82 +55,121 @@
 }
 
 /* =========================
-   SIDEBAR GROUP
+   ALL PRODUCTS BUTTON
 ========================= */
 
-.sidebar-group{
-  margin-bottom: 18px;
-  border-radius: 15px;
-  overflow: hidden;
-  background: #F8F2DE;
-  border: 1px solid #ECDCBF;
+.all-products-btn{
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #D84040,
+    #A31D1D
+  );
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.sidebar-group:hover{
-  box-shadow: 0 8px 18px rgba(216,64,64,0.15);
+.all-products-btn:hover{
+  transform: translateY(-2px);
 }
 
 /* =========================
-   SELECT BUTTON
+   CATEGORY WRAPPER
 ========================= */
 
-.sidebar-select{
+.category-wrapper{
+  margin-bottom: 12px;
+}
+
+/* =========================
+   CATEGORY TITLE
+========================= */
+
+.category-title{
   width: 100%;
-  padding: 16px;
+  text-align: left;
+  padding: 15px 18px;
   border: none;
-  outline: none;
+  border-radius: 12px;
   background: linear-gradient(
     135deg,
     #F8F2DE,
     #ECDCBF
   );
-  color: #454040;
+  color: #A31D1D;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  appearance: none;
-}
-
-/* =========================
-   SUBMENU
-========================= */
-
-.submenu{
-  max-height: 0;
-  overflow: hidden;
-  transition: 0.4s ease;
-  background: white;
-}
-
-.sidebar-group:hover .submenu{
-  max-height: 500px;
-  padding: 15px;
-}
-
-/* =========================
-   SUBMENU LINKS
-========================= */
-
-.submenu a{
-  display: block;
-  text-decoration: none;
-  color: white;
-  font-size: 15px;
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  background: #D84040;
-  border: 1px solid #A31D1D;
   transition: 0.3s;
 }
 
-.submenu a:hover{
+.category-title:hover{
+  background: #D84040;
+  color: white;
+}
+
+/* =========================
+   SUBMENU HIDDEN
+========================= */
+
+.category-items{
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+/* =========================
+   SHOW ON HOVER
+========================= */
+
+.category-wrapper:hover .category-items{
+  max-height: 500px;
+  opacity: 1;
+  visibility: visible;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ECDCBF;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   SUB CATEGORY BUTTONS
+========================= */
+
+.category-items button{
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 10px;
+  background: #F8F2DE;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.category-items button:hover{
   background: #D84040;
   color: white;
   transform: translateX(5px);
 }
 
+.category-items button:last-child{
+  margin-bottom: 0;
+} 
 /* =========================
    PRODUCTS SECTION
 ========================= */
@@ -186,11 +232,9 @@
   font-size: 18px;
   color: #A31D1D;
   margin-bottom: 10px;
-
   min-height: 50px;
-
   display: flex;
-  align-items: center;
+  align-items: center;  
   justify-content: center;
 }
 
@@ -214,37 +258,44 @@
   margin-bottom: 18px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* Wishlist */
 
-/* .productdetail button{
-  width: 100%;
-  padding: 12px;
-  border: none;
+.product h1{
+  text-align: center;
+  font-size: 46px;
+  color: #A31D1D;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+/* .product h1::after{
+  content: "";
+  width: 100px;
+  height: 4px;
+  background: #D84040;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -15px;
   border-radius: 10px;
-  background: linear-gradient(
-    135deg,
-    #D84040,
-    #A31D1D
-  );
-  color: white;
-  margin-bottom: 10px;
+} */
+
+.productdetail {
+  position: relative;
+}
+
+.wishlist-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.productdetail button:hover{
-  transform: scale(1.03);
+.wishlist-icon.active {
+  color: red;
 }
-
-.productdetail button a{
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  display: block;
-} */
 
 /* ADD TO CART BUTTON */
 

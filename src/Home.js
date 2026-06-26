@@ -118,6 +118,10 @@ const Home = () => {
                       My Profile
                     </Link>
 
+                    <Link to="/Wishlist">
+                      My Wishlist
+                    </Link>
+
                     <Link to="/MyOrders">
                       My Orders
                     </Link>

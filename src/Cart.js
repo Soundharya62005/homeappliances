@@ -19,6 +19,7 @@ function Cart() {
   const fetchCart = async () => {
     try {
       const res = await axios.get(
+
         `http://localhost:5000/api/cart/${user._id}`
       );
 
@@ -32,7 +33,7 @@ function Cart() {
     }
   };
 
-  const removeItem = async (id) => {
+  const removeItem = async (id) => {     
     try {
 
       await axios.delete(
