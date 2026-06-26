@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import './Signup.css';
-import React, { useState } from "react";
+import React, { useState , useRef} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import logo from './logo1.jpg';
+import emailjs from '@emailjs/browser';
 
 
 // import Swal from 'sweetalert2'
@@ -43,6 +44,7 @@ function Signup() {
   //   });
   // };
   const navigate = useNavigate();
+   const form = useRef();
 
   const [userData, setUserData] = useState({
   username: "",
@@ -52,8 +54,6 @@ function Signup() {
   address: "",
   phone: ""
 });
-
-
 
 
   const handleChange = (e) => {
@@ -75,6 +75,17 @@ function Signup() {
       console.error(err);
       alert("Failed to Data saved")
     }
+
+    // Mail sending logic
+
+    emailjs.sendForm('service_ld9ihsa', 'template_0v8n5bd', form.current, {
+        publicKey: 'ZZnM46B_alYF18no-',
+      })
+      .then(() => {
+          alert('Message sent successfully!');
+        }, (error) => {
+          console.log('Failed...', error.text);
+        });
   };
 
 
@@ -85,23 +96,15 @@ function Signup() {
           <img src={logo} alt="logo" />
           <h2>KS HOME APPLIANCES</h2>
         </div>
-
-        {/* <input type="text" placeholder='Search...' /> */}
         
       </div>
-
-      {/* <div className='navbar'>
-        <Link to="/Home"><i className="fa-solid fa-house"></i> Home</Link>
-        <Link to="/AboutUs"><i className="fa-solid fa-circle-info"></i> About</Link>
-        <Link to="/Samproduct"><i className="fa-solid fa-box"></i> Products</Link>
-        <Link to="/Contact"><i className="fa-solid fa-phone"></i> Contact</Link>
-      </div> */}
 
 
       <div className='signup'>
         <h2>Registration Form</h2>
 
-        <form onSubmit={handleSubmit}>
+        <form ref={form}
+        onSubmit={handleSubmit}>
 
           <label>Username:</label>
           <input type="text" name="username" placeholder="Enter your Username" onChange={handleChange} /><br />

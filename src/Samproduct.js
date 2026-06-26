@@ -1,40 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import Samviewproduct from './Samviewproduct'
-import Home from './Home'
-import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Samviewproduct from "./Samviewproduct";
+import "./Samproduct.css";
+import Home from "./Home";
 
 const Samproduct = () => {
-
-  // State
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  // Fetch Products 
   useEffect(() => {
-
     fetchProducts();
-
   }, []);
 
   const fetchProducts = async () => {
-
     try {
+      const res = await axios.get("http://localhost:5000/api/products");
 
-      const res = await axios.get(
-        "http://localhost:5000/api/products"
-      );
+      console.log("ALL PRODUCTS:", res.data);
 
-      console.log(res.data);
-
-      setProducts(res.data);
-
+      setProducts(res.data || []);
+      setFilteredProducts(res.data || []);
     } catch (err) {
-
-      console.log(
-        "Fetch Product Error",
-        err
-      );
+      console.log("Fetch Product Error", err);
     }
+  };
+ 
+  const filterByProduct = (productType) => {
+    const filtered = products.filter(
+      (p) => 
+        p.productname &&
+        p.productname.toLowerCase() === productType.toLowerCase()
+    );
+
+    setFilteredProducts(filtered);
+  };
+
+  const showAllProducts = () => {
+    setFilteredProducts(products);
   };
 
   return (
@@ -47,115 +49,200 @@ const Samproduct = () => {
 
           <h2>KS Home Appliances</h2>
 
-          {/* Cooling Appliances */}
-          <div className="sidebar-group">
-            <select className="sidebar-select">
-              <option>Cooling Appliances</option>
-            </select>
+          <button
+            className="all-products-btn"
+            onClick={showAllProducts}
+          >
+            All Products
+          </button>
 
-            <div className="submenu">
-              <a href="#" data-category="ac">Air Conditioners</a>
-              <a href="#" data-category="aircooler">Air Coolers</a>
-              <a href="#" data-category="fan">Fans</a>
-              <a href="#" data-category="airpurifier">Air Purifiers</a>
+          {/* Cooling Appliances */}
+
+          <div className="category-wrapper">
+
+            <button className="category-title">
+              Cooling Appliances
+            </button>
+
+            <div className="category-items">
+
+              <button onClick={() => filterByProduct("AC")}>
+                Air Conditioners
+              </button>
+
+              <button onClick={() => filterByProduct("Air Cooler")}>
+                Air Coolers 
+              </button>
+
+              <button onClick={() => filterByProduct("Fan")}>
+                Fans
+              </button>
+
             </div>
+
           </div>
 
           {/* Kitchen Appliances */}
-          <div className="sidebar-group">
-            <select className="sidebar-select">
-              <option>Kitchen Appliances</option>
-            </select>
 
-            <div className="submenu">
-              <a href="#" data-category="refrigerator">Refrigerators</a>
-              <a href="#" data-category="mixer">Mixer Grinders</a>
-              <a href="#" data-category="microwave">Microwaves</a>
-              <a href="#" data-category="induction">Induction Stoves</a>
-              <a href="#" data-category="chimney">Kitchen Chimneys</a>
-              <a href="#" data-category="dishwasher">Dishwashers</a>
+          <div className="category-wrapper">
+
+            <button className="category-title">
+              Kitchen Appliances
+            </button>
+
+            <div className="category-items">
+
+              <button onClick={() => filterByProduct("Refrigerator")}>
+                Refrigerators
+              </button>
+
+              <button onClick={() => filterByProduct("Mixer Grinders")}>
+                Mixer Grinders
+              </button>
+
+              <button onClick={() => filterByProduct("Microwaves")}>
+                Microwaves 
+              </button>
+
+              <button onClick={() => filterByProduct("Induction Stove")}>
+                Induction Stoves
+              </button>
+
+              <button onClick={() => filterByProduct("Dishwasher")}>
+                Dishwashers
+              </button>
+
             </div>
+
           </div>
 
           {/* Cleaning Appliances */}
-          <div className="sidebar-group">
-            <select className="sidebar-select">
-              <option>Cleaning Appliances</option>
-            </select>
 
-            <div className="submenu">
-              <a href="#" data-category="washingmachine">Washing Machines</a>
-              <a href="#" data-category="vacuum">Vacuum Cleaners</a>
-              <a href="#" data-category="steamcleaner">Steam Cleaners</a>
+          <div className="category-wrapper">
+
+            <button className="category-title">
+              Cleaning Appliances
+            </button>
+
+            <div className="category-items">
+
+              <button onClick={() => filterByProduct("Washing Machine")}>
+                Washing Machines
+              </button>
+
+              <button onClick={() => filterByProduct("Vaccum Cleaner")}>
+                Vacuum Cleaners
+              </button>
+
+              <button onClick={() => filterByProduct("Steam Cleaner")}>
+                Steam Cleaners
+              </button>
+
             </div>
+
           </div>
 
           {/* Home Comfort */}
-          <div className="sidebar-group">
-            <select className="sidebar-select">
-              <option>Home Comfort</option>
-            </select>
 
-            <div className="submenu">
-              <a href="#" data-category="waterheater">Water Heaters</a>
-              <a href="#" data-category="roomheater">Room Heaters</a>
-              <a href="#" data-category="humidifier">Humidifiers</a>
+          <div className="category-wrapper">
+
+            <button className="category-title">
+              Home Comfort
+            </button>
+
+            <div className="category-items">
+
+              <button onClick={() => filterByProduct("Water Heater")}>
+                Water Heaters
+              </button>
+
+              <button onClick={() => filterByProduct("Room Heater")}>
+                Room Heaters
+              </button>
+
             </div>
+
           </div>
 
           {/* Entertainment */}
-          <div className="sidebar-group">
-            <select className="sidebar-select">
-              <option>Entertainment</option>
-            </select>
 
-            <div className="submenu">
-              <a href="#" data-category="tv">Televisions</a>
-              <a href="#" data-category="speaker">Speakers</a>
-              <a href="#" data-category="hometheater">Home Theaters</a>
+          <div className="category-wrapper">
+
+            <button className="category-title">
+              Entertainment
+            </button>
+
+            <div className="category-items">
+
+              <button onClick={() => filterByProduct("Television")}>
+                Televisions
+              </button>
+
+              <button onClick={() => filterByProduct("Speaker")}>
+                Speakers
+              </button>
+
+              <button onClick={() => filterByProduct("Home Theater")}>
+                Home Theaters
+              </button>
+
             </div>
+
           </div>
 
           {/* Personal Care */}
-          <div className="sidebar-group">
-            <select className="sidebar-select">
-              <option>Personal Care</option>
-            </select>
 
-            <div className="submenu">
-              <a href="#" data-category="hairdryer">Hair Dryers</a>
-              <a href="#" data-category="trimmer">Trimmers</a>
-              <a href="#" data-category="ironbox">Irons</a>
+          <div className="category-wrapper">
+
+            <button className="category-title">
+              Personal Care
+            </button>
+
+            <div className="category-items">
+
+              <button onClick={() => filterByProduct("Hair Dryer")}>
+                Hair Dryers
+              </button>
+
+              <button onClick={() => filterByProduct("Iron Box ")}>
+                Irons
+              </button>
+
             </div>
+
           </div>
 
           {/* Lighting & Electrical */}
-          <div className="sidebar-group">
-            <select className="sidebar-select">
-              <option>Lighting & Electrical</option>
-            </select>
 
-            <div className="submenu">
-              <a href="#" data-category="led">LED Lights</a>
-              <a href="#" data-category="inverter">Inverters</a>
-              <a href="#" data-category="battery">Batteries</a>
+          <div className="category-wrapper">
+
+            <button className="category-title">
+              Lighting & Electrical
+            </button>
+
+            <div className="category-items">
+
+              <button onClick={() => filterByProduct("LED Lights")}>
+                LED Lights
+              </button>
+
+              <button onClick={() => filterByProduct("Inverter")}>
+                Inverters
+              </button>
+
             </div>
+
           </div>
 
         </div>
 
-        {/* PRODUCTS */}
-        <div className='product'>
-
-          <Samviewproduct
-            productdata={products}
-          />
-
+        {/* Products */}
+        <div className="product">
+          <Samviewproduct productdata={filteredProducts} />
         </div>
-
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Samproduct;

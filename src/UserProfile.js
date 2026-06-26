@@ -31,7 +31,8 @@ return ( <div className="profile-container"> <h2>Please Login First</h2> <Link t
 }
 
 return (
-<> <div className="top-header"> 
+<> 
+  <div className="top-header"> 
     <div className="logo"> 
         <img src={logo} alt="logo" /> 
         <h2>KS HOME APPLIANCES</h2> 

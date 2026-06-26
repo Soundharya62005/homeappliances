@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-// import "./Settings.css";
 import axios from "axios";
 import Swal from "sweetalert2";
+import './UserSettings.css';
+import logo from "./logo1.jpg";
 import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
@@ -31,17 +32,30 @@ const Settings = () => {
 
   // HANDLE PASSWORD CHANGE
   const handlePasswordChange = async () => {
+    // Validation checks
+    if (!passwords.currentPassword || !passwords.newPassword || !passwords.confirmPassword) {
+      return Swal.fire("Error", "All fields are required", "error");
+    }
+
     if (passwords.newPassword !== passwords.confirmPassword) {
-      return Swal.fire("Error", "Passwords not matching", "error");
+      return Swal.fire("Error", "New passwords do not match", "error");
+    }
+
+    if (passwords.newPassword.length < 6) {
+      return Swal.fire("Error", "Password must be at least 6 characters", "error");
     }
 
     try {
-      await axios.put(
-        `http://localhost:5000/api/users/password/${user._id}`,
-        passwords
+      const response = await axios.put(
+        `http://localhost:5000/api/users/password/${user._id}`, 
+        {
+          currentPassword: passwords.currentPassword,
+          newPassword: passwords.newPassword,
+          confirmPassword: passwords.confirmPassword
+        }
       );
 
-      Swal.fire("Success", "Password updated", "success");
+      Swal.fire("Success", response.data.message || "Password updated successfully", "success"); 
 
       setPasswords({
         currentPassword: "",
@@ -50,11 +64,13 @@ const Settings = () => {
       });
 
     } catch (err) {
-      Swal.fire("Error", "Update failed", "error");
+      const errorMessage = err.response?.data?.message || "Password update failed. Please check your current password and try again.";
+      Swal.fire("Error", errorMessage, "error");
+      console.error("Password update error:", err); 
     }
   };
 
-  // LOGOUT
+  // LOGOUT       
   const handleLogout = () => {
     localStorage.removeItem("loginUser");
     navigate("/Signin");
@@ -63,13 +79,14 @@ const Settings = () => {
   // DELETE ACCOUNT
   const handleDelete = async () => {
     const confirm = window.confirm("Delete account permanently?");
+
     if (!confirm) return;
 
     try {
       await axios.delete(`http://localhost:5000/api/users/${user._id}`);
 
       localStorage.removeItem("loginUser");
-
+  
       Swal.fire("Deleted", "Account removed", "success");
 
       navigate("/Signin");
@@ -78,8 +95,17 @@ const Settings = () => {
       Swal.fire("Error", "Delete failed", "error");
     }
   };
-
+ 
   return (
+
+    <>
+    <div className="top-header"> 
+    <div className="logo"> 
+        <img src={logo} alt="logo" /> 
+        <h2>KS HOME APPLIANCES</h2> 
+        </div> 
+    </div>
+
     <div className={`settings-container ${darkMode ? "dark" : ""}`}>
 
       <h2>Settings</h2>
@@ -95,7 +121,7 @@ const Settings = () => {
 
       {/* SECURITY */}
       {activeTab === "security" && (
-        <div className="tab-box">
+        <div className="tab-box"> 
 
           <h3>Change Password</h3>
 
@@ -227,8 +253,7 @@ const Settings = () => {
 
           <button
             style={{ background: "red", color: "white" }}
-            onClick={handleDelete}
-          >
+            onClick={handleDelete}>
             Delete Account
           </button>
 
@@ -236,6 +261,8 @@ const Settings = () => {
       )}
 
     </div>
+
+    </>
   );
 };
 

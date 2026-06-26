@@ -1,20 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import "./Samproduct.css";
 
 function Samviewproduct({ productdata }) {
-
   const navigate = useNavigate();
 
-  const handleAddToCart = async (product) => {
+  const user = JSON.parse(localStorage.getItem("loginUser"));
 
-    try {
+  const wishlistKey = user
+    ? `wishlist_${user._id}`
+    : "wishlist_guest";
 
-      const user = JSON.parse(
-        localStorage.getItem("loginUser")
+  const [wishlist, setWishlist] = useState(
+    JSON.parse(localStorage.getItem(wishlistKey)) || []
+  );
+
+  const toggleWishlist = (product) => {
+    const user = JSON.parse(localStorage.getItem("loginUser"));
+
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Login Required",
+        text: "Please login first"
+      });
+      return;
+    }
+
+    const wishlistKey = `wishlist_${user._id}`;
+
+    let updatedWishlist;
+
+    const exists = wishlist.find(
+
+      (item) => item._id === product._id
+    );
+
+    if (exists) {
+      updatedWishlist = wishlist.filter(
+        (item) => item._id !== product._id
       );
+
+      Swal.fire({
+        icon: "success",
+        title: "Removed",
+        text: "Product Removed From Wishlist",
+        timer: 1200,
+        showConfirmButton: false
+      });
+    } else {
+      updatedWishlist = [...wishlist, product];
+
+      Swal.fire({
+        icon: "success",
+        title: "Added",
+        text: "Product Added To Wishlist",
+        timer: 1200,
+        showConfirmButton: false
+      });
+    }
+
+    setWishlist(updatedWishlist);
+
+    localStorage.setItem(
+      wishlistKey,
+      JSON.stringify(updatedWishlist)
+    );
+  };
+
+  const handleAddToCart = async (product) => {
+    try {
+      const user = JSON.parse(localStorage.getItem("loginUser"));
 
       if (!user) {
         Swal.fire({
@@ -25,24 +83,20 @@ function Samviewproduct({ productdata }) {
         return;
       }
 
-      await axios.post(
-        "http://localhost:5000/api/cart",
-        {
-          userId: user._id,
-          productId: product._id,
-          productname: product.productname,
-          price: product.price,
-          image: product.image, 
-          quantity: 1
-        }
-      );
+      await axios.post("http://localhost:5000/api/cart", {
+        userId: user._id,
+        productId: product._id,
+        productname: product.productname,
+        price: product.price,
+        image: product.image,
+        quantity: 1
+      });
 
       Swal.fire({
         icon: "success",
         title: "Added",
         text: "Product Added To Cart Successfully"
       });
-
     } catch (err) {
       console.log(err);
 
@@ -55,26 +109,19 @@ function Samviewproduct({ productdata }) {
   };
 
   const handleBuyNow = (product) => {
-
-    const user = JSON.parse(
-      localStorage.getItem("loginUser")
-    );
+    const user = JSON.parse(localStorage.getItem("loginUser"));
 
     if (!user) {
-
       Swal.fire({
         icon: "warning",
         title: "Login Required",
-        text: "Please login first",
-        confirmButtonText: "OK"
+        text: "Please login first"
       }).then(() => {
-
-        navigate("/login", {
+        navigate("/Signin", {
           state: {
             redirectTo: `/ProductDetails/${product._id}`
           }
         });
-
       });
 
       return;
@@ -85,12 +132,19 @@ function Samviewproduct({ productdata }) {
 
   return (
     <div className="product">
-
       {productdata.length === 0 ? (
         <h3>No Products Found</h3>
       ) : (
         productdata.map((product) => (
           <div className="productdetail" key={product._id}>
+            <i
+              className={
+                wishlist.some((item) => item._id === product._id)
+                  ? "fa-solid fa-heart wishlist-icon active"
+                  : "fa-regular fa-heart wishlist-icon"
+              }
+              onClick={() => toggleWishlist(product)}
+            ></i>
 
             <img
               src={`http://localhost:5000/uploads/${product.image}`}
@@ -116,11 +170,9 @@ function Samviewproduct({ productdata }) {
             >
               Buy Now
             </button>
-
           </div>
         ))
       )}
-
     </div>
   );
 }

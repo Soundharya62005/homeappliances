@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Home from './Home';
+// import Home from './Home';
 import Nav from './Nav';
 import Samproduct from './Samproduct';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -38,6 +38,8 @@ import CheckoutPage from './CheckoutPage';
 import ConfirmOrder from './ConfirmOrder';
 import MyOrders from './MyOrders';
 import UserSettings from './UserSettings';
+import { Mailer } from './Mailer';
+import Wishlist from './Wishlist';
 
 
 // import Hookusestate from './Hookusestate';
@@ -102,6 +104,8 @@ root.render(
         <Route path="/ConfirmOrder" element={<ConfirmOrder />} />
         <Route path="/MyOrders" element={<MyOrders />} />
         <Route path="/UserSettings" element={<UserSettings />} />
+        <Route path="/jsmailer" element={<Mailer />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
     </BrowserRouter>
     {/* <SampleForm/> */}
