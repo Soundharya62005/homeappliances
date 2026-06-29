@@ -9,6 +9,7 @@ function Wishlist() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("loginUser"));
+    console.log("Testing")
 
     if (!user) {
       return;
