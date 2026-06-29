@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import logo from './logo1.jpg';
 import "./Samproduct.css";
-import { jsx } from "react/jsx-runtime";
+// import { jsx } from "react/jsx-runtime";
 
 function Wishlist() {
   const [wishlistProducts, setWishlistProducts] = useState([]);

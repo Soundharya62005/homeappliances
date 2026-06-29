@@ -92,7 +92,7 @@ function Cart() {
                 <button onClick={() => removeItem(item._id)}>
                   Remove
                 </button>
-
+ 
               </div>
             ))}
 
