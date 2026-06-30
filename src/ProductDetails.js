@@ -13,7 +13,7 @@ function ProductDetails() {
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [product]);
 
   const fetchProduct = async () => {
     try {
